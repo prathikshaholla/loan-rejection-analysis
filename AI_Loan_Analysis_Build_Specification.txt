@@ -1,71 +1,0 @@
-AI-POWERED LOAN ANALYSIS SYSTEM
-Product Requirements & Feature Specification Document
-EXECUTIVE SUMMARY
-
-Loan rejection is one of the most frustrating experiences for borrowers — and one of the most avoidable. The majority of rejected applications fail not because the borrower is ineligible, but due to incorrect bank selection, poorly structured files, or mismatches with automated underwriting systems.
-
-This document specifies the requirements for building an AI-powered Loan Analysis System that transforms how rejected loan files are reviewed, scored, and re-routed — significantly increasing approval probability and processing speed.
-
-PROBLEM ? SOLUTION MAPPING
-
-?  PROBLEM?  AI SOLUTIONIncorrect bank selectionAI-driven bank/NBFC matchingPoor file presentationAutomated file quality scoringAutomated system mismatchesProfile-to-system compatibility checkLack of CIBIL analysisReal-time CIBIL evaluationNo structured review processStructured rejection analysis workflow
-EXPECTED OUTCOMES
-
-85%
-Approval Rate Improvement60%
-Faster Processing Time3x
-Better Bank Matching
-CORE FEATURES TO BUILD
-
-
-1Rejection Reason Analyzer
-Parses bank rejection notices and internal loan data to identify the primary reason(s) for rejection. Classifies into categories: CIBIL, income, documentation, bank mismatch, legal, technical.
-2Income & CIBIL Evaluator
-Accurately calculates eligible loan amounts based on income type (salaried / self-employed / business), obligations, and credit score. Flags borderline cases and recommends improvement steps.
-3Bank & NBFC Matching Engine
-Matches the borrower profile against a curated database of 50+ banks and NBFCs, ranked by approval probability. Considers LTV ratios, CIBIL cutoffs, income norms, and property type.
-4File Quality Scorer
-Reviews the application file for completeness, document legibility, and formatting standards. Generates a File Quality Score (0–100) and a checklist of required corrections.
-5Re-submission Recommendation Report
-Generates a structured PDF/Word report with: rejection analysis, corrective actions, recommended lenders, and revised loan eligibility — ready to share with the borrower.
-AI SYSTEM PROMPTS TO IMPLEMENT
-
-
-PROMPT 1 — Rejection Analysis AgentYou are an expert loan underwriter AI. Analyze the following rejected loan application and provide: 1. Primary rejection reason (1 sentence) 2. Secondary contributing factors (max 3 bullets) 3. CIBIL impact assessment (score range and effect) 4. Income gap analysis (required vs. actual) 5. Documentation deficiencies (if any)  Respond in structured JSON with keys: primary_reason, contributing_factors[], cibil_assessment, income_gap, doc_issues[].
-PROMPT 2 — Bank Matching AgentYou are a loan placement specialist AI. Given the borrower profile below, identify the top 5 most suitable banks or NBFCs from the lender database.   For each lender, provide: - Lender name and type (PSU / Private / NBFC) - Approval probability (%) - Key eligibility match points - Any risk flags  Rank by approval probability (highest first). Respond in structured JSON.
-PROMPT 3 — File Quality Audit AgentYou are a loan file audit specialist. Review the submitted loan application file and evaluate: 1. Document completeness (checklist of present vs. missing docs) 2. Data consistency (income, ITR, bank statements alignment) 3. File presentation score (0-100) 4. Critical corrections required before resubmission 5. Estimated resubmission readiness timeline  Provide actionable, prioritized recommendations. Be specific and concise.
-PROMPT 4 — Borrower Report GeneratorYou are a professional loan advisor AI. Generate a clear, empathetic borrower-facing report that explains: - Why the loan was rejected (in simple language, no jargon) - What the borrower can do to improve their profile - Which lenders are recommended for reapplication - Revised loan amount they may qualify for - Timeline to achieve approval readiness  Tone: professional, encouraging, and actionable. Format as a structured letter.
-REQUIRED DATA INPUTS
-
-
-• Borrower KYC data (PAN, Aadhaar, age, employment type)
-• CIBIL report or credit score (numeric + report PDF optional)
-• Income documents: ITR, Form 16, salary slips, P&L statements
-• Bank statements (6–12 months)
-• Existing loan obligations / EMI schedule
-• Property details (for home / LAP loans): type, location, valuation
-• Rejection letter from previous lender (if available)
-• Loan amount requested and tenure preference
-
-RECOMMENDED TECH STACK
-
-
-LayerRecommended TechnologyAI / LLM EngineClaude Sonnet / GPT-4o via API — for analysis, matching, report generationBackendNode.js or Python (FastAPI) — API orchestration and business logicDatabasePostgreSQL — borrower profiles, lender matrix, application historyFile ProcessingPDF.js / PyMuPDF — document parsing and OCRReport GenerationDOCX.js / ReportLab — structured output reportsFrontendReact.js + Tailwind — dashboard for loan officers and borrowersAuth & SecurityJWT + AES-256 encryption — PII data protection
-SYSTEM WORKFLOW
-
-
-1. Borrower / DSA uploads rejected file and loan details into the system
-2. AI Rejection Analyzer extracts and classifies rejection reasons
-3. CIBIL & Income Evaluator calculates revised eligibility
-4. File Quality Scorer audits documents and generates correction checklist
-5. Bank Matching Engine ranks top lenders by approval probability
-6. System generates Structured Resubmission Report (PDF/DOCX)
-7. Loan officer reviews and initiates re-application with recommended lender
-8. Outcome is logged; system learns from approval/rejection feedback loop
-
-Rejected loan files deserve structured review, not repeated rejection.
-Smart analysis leads to better outcomes.
-AI Loan Analysis System  |  Build Specification
-
-Confidential — AI Loan Analysis Platform  |  Page 1
-
